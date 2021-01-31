@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://org.ws/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://org.ws/" targetNamespace="http://org.ws/">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://org.ws/xsd">
+            <xs:element name="subtracao">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="i" type="xs:double"/>
+                        <xs:element name="j" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="subtracaoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="soma">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="i" type="xs:double"/>
+                        <xs:element name="j" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="somaResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="multiplicacao">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="i" type="xs:double"/>
+                        <xs:element name="j" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="multiplicacaoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="divisao">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="i" type="xs:double"/>
+                        <xs:element name="j" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="divisaoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:double"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="somaRequest">
+        <wsdl:part name="parameters" element="ns:soma"/>
+    </wsdl:message>
+    <wsdl:message name="somaResponse">
+        <wsdl:part name="parameters" element="ns:somaResponse"/>
+    </wsdl:message>
+    <wsdl:message name="divisaoRequest">
+        <wsdl:part name="parameters" element="ns:divisao"/>
+    </wsdl:message>
+    <wsdl:message name="divisaoResponse">
+        <wsdl:part name="parameters" element="ns:divisaoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="subtracaoRequest">
+        <wsdl:part name="parameters" element="ns:subtracao"/>
+    </wsdl:message>
+    <wsdl:message name="subtracaoResponse">
+        <wsdl:part name="parameters" element="ns:subtracaoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="multiplicacaoRequest">
+        <wsdl:part name="parameters" element="ns:multiplicacao"/>
+    </wsdl:message>
+    <wsdl:message name="multiplicacaoResponse">
+        <wsdl:part name="parameters" element="ns:multiplicacaoResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="CalculadoraPortType">
+        <wsdl:operation name="soma">
+            <wsdl:input message="tns:somaRequest" wsaw:Action="urn:soma"/>
+            <wsdl:output message="tns:somaResponse" wsaw:Action="urn:somaResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="divisao">
+            <wsdl:input message="tns:divisaoRequest" wsaw:Action="urn:divisao"/>
+            <wsdl:output message="tns:divisaoResponse" wsaw:Action="urn:divisaoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="subtracao">
+            <wsdl:input message="tns:subtracaoRequest" wsaw:Action="urn:subtracao"/>
+            <wsdl:output message="tns:subtracaoResponse" wsaw:Action="urn:subtracaoResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="multiplicacao">
+            <wsdl:input message="tns:multiplicacaoRequest" wsaw:Action="urn:multiplicacao"/>
+            <wsdl:output message="tns:multiplicacaoResponse" wsaw:Action="urn:multiplicacaoResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CalculadoraSoap11Binding" type="tns:CalculadoraPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="soma">
+            <soap:operation soapAction="urn:soma" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="divisao">
+            <soap:operation soapAction="urn:divisao" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="subtracao">
+            <soap:operation soapAction="urn:subtracao" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="multiplicacao">
+            <soap:operation soapAction="urn:multiplicacao" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CalculadoraSoap12Binding" type="tns:CalculadoraPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="soma">
+            <soap12:operation soapAction="urn:soma" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="divisao">
+            <soap12:operation soapAction="urn:divisao" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="subtracao">
+            <soap12:operation soapAction="urn:subtracao" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="multiplicacao">
+            <soap12:operation soapAction="urn:multiplicacao" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="CalculadoraHttpBinding" type="tns:CalculadoraPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="soma">
+            <http:operation location="soma"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="divisao">
+            <http:operation location="divisao"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="subtracao">
+            <http:operation location="subtracao"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="multiplicacao">
+            <http:operation location="multiplicacao"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="Calculadora">
+        <wsdl:port name="CalculadoraHttpSoap11Endpoint" binding="tns:CalculadoraSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/Calculadora"/>
+        </wsdl:port>
+        <wsdl:port name="CalculadoraHttpSoap12Endpoint" binding="tns:CalculadoraSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/Calculadora"/>
+        </wsdl:port>
+        <wsdl:port name="CalculadoraHttpEndpoint" binding="tns:CalculadoraHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/Calculadora"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
